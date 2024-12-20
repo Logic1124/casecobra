@@ -27,6 +27,11 @@ import { ArrowRight, Check, ChevronDownIcon } from "lucide-react";
 import { BASE_PRICE } from "@/config/products";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { saveConfig as _saveConfig, SaveConfigArgs } from "./action";
+import { useRouter } from "next/navigation";
+import { color } from "framer-motion";
+import { PhoneModel } from "@prisma/client";
 interface DesignConfiguratorProps {
   configId: string;
   imageUrl: string;
@@ -39,6 +44,28 @@ const DesingConfigurator = ({
   imageDimensions,
 }: DesignConfiguratorProps) => {
   const { toast } = useToast();
+  const router = useRouter();
+  const { mutate: saveConfig } = useMutation({
+    mutationKey: ["save-config"],
+    mutationFn: async (args: SaveConfigArgs) => {
+      await Promise.all([saveConfiguration(), _saveConfig(args)]);
+    },
+    onError: (err) => {
+      toast({
+        title: "Something went wrong",
+        description: "There was an error on our end, please try again.",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      // toast({
+      //   title: "Success",
+      //   description: "Your config has been saved",
+      //   variant: "default",
+      // });
+      router.push(`/configure/preview?id=${configId}`);
+    },
+  });
   const [options, setOptions] = useState<{
     color: (typeof COLORS)[number];
     model: (typeof MODELS.options)[number];
@@ -377,7 +404,19 @@ const DesingConfigurator = ({
                     100
                 )}
               </p>
-              <Button onClick={saveConfiguration} size="sm" className="w-full">
+              <Button
+                onClick={() =>
+                  saveConfig({
+                    configId,
+                    color: options.color.value,
+                    material: options.material.value,
+                    finish: options.finish.value,
+                    model: options.model.value as PhoneModel,
+                  })
+                }
+                size="sm"
+                className="w-full"
+              >
                 Continue
                 <ArrowRight className="h-4 w-4 ml-1.5 inline"></ArrowRight>
               </Button>

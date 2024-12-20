@@ -46,14 +46,14 @@ export const MATERIALS = {
   name: "material",
   options: [
     {
-      label: "Slilcone",
-      value: "Slilcone",
+      label: "Silicone",
+      value: "silicone",
       description: undefined,
       price: PRODUCT_PRICES.material.slilcone,
     },
     {
       label: "Soft Polycarbonate",
-      value: "Polycarbonate",
+      value: "polycarbonate",
       description: "Scratch-resistant coating",
       price: PRODUCT_PRICES.material.polycarbonate,
     },

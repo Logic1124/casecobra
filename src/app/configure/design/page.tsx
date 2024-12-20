@@ -8,7 +8,8 @@ interface PageProps {
   };
 }
 const Page = async ({ searchParams }: PageProps) => {
-  const { id } = searchParams;
+  const { id } = await searchParams;
+
   // make db call
   if (!id || typeof id !== "string") {
     return notFound();
