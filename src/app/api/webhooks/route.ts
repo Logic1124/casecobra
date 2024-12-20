@@ -1,7 +1,5 @@
 import { db } from "@/app/db";
 import { stripe } from "@/lib/stripe";
-import { error } from "console";
-import { s } from "framer-motion/client";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";

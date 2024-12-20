@@ -3,9 +3,8 @@ import { notFound } from "next/navigation";
 import DesignPreview from "./DesignPreview";
 
 interface PageProps {
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  searchParams: any;
 }
 
 const Page = async ({ searchParams }: PageProps) => {

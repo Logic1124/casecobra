@@ -18,8 +18,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
@@ -30,7 +28,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { saveConfig as _saveConfig, SaveConfigArgs } from "./action";
 import { useRouter } from "next/navigation";
-import { color } from "framer-motion";
 import { PhoneModel } from "@prisma/client";
 interface DesignConfiguratorProps {
   configId: string;
@@ -38,7 +35,7 @@ interface DesignConfiguratorProps {
   imageDimensions: { width: number; height: number };
 }
 
-const DesingConfigurator = ({
+const DesignConfigurator = ({
   configId,
   imageUrl,
   imageDimensions,
@@ -50,7 +47,7 @@ const DesingConfigurator = ({
     mutationFn: async (args: SaveConfigArgs) => {
       await Promise.all([saveConfiguration(), _saveConfig(args)]);
     },
-    onError: (err) => {
+    onError: () => {
       toast({
         title: "Something went wrong",
         description: "There was an error on our end, please try again.",
@@ -95,6 +92,7 @@ const DesingConfigurator = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const { startUpload } = useUploadThing("imageUploader");
   // 定义一个异步函数，用于保存当前的配置信息
+
   async function saveConfiguration() {
     try {
       // 获取 phoneCaseRef 元素的边界信息
@@ -150,9 +148,10 @@ const DesingConfigurator = ({
       const blob = base64ToBlob(base64Data, "image/png");
       const file = new File([blob], "fileName.png", { type: "image/png" });
       await startUpload([file], { configId });
-    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_) {
       toast({
-        title: "Something went wrong",
+        title: "Somethcling went wrong",
         description: "There was a problem saving your config,please try again.",
         variant: "destructive",
       });
@@ -427,4 +426,4 @@ const DesingConfigurator = ({
     </div>
   );
 };
-export default DesingConfigurator;
+export default DesignConfigurator;

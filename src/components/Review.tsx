@@ -9,7 +9,6 @@ import {
 } from "react";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { div } from "framer-motion/client";
 import Phone from "./Phone";
 const PHONES = [
   "/testimonials/1.jpg",
@@ -49,7 +48,7 @@ function ReviewColumn({
     "reviewClassName",
     reviewClassName,
     "msPerPixel",
-    msPerPixel,
+    msPerPixel
   );
 
   const columnRef = useRef<HTMLDivElement | null>(null);
@@ -101,7 +100,7 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
     <div
       className={cn(
         "animate-fade-in rounded-[2.25rem] bg-white p-6 opacity-0 shadow-xl shadow-slate-900*/5",
-        className,
+        className
       )}
       style={{ animationDelay }}
       {...props}

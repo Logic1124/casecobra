@@ -1,14 +1,13 @@
 import { db } from "@/app/db";
 import { notFound } from "next/navigation";
-import DesingConfigurator from "./DesingConfigurator";
+import DesignConfigurator from "./DesignConfigurator";
 
 interface PageProps {
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  searchParams: any;
 }
 const Page = async ({ searchParams }: PageProps) => {
-  const { id } = await searchParams;
+  const { id } = searchParams;
 
   // make db call
   if (!id || typeof id !== "string") {
@@ -24,7 +23,7 @@ const Page = async ({ searchParams }: PageProps) => {
   }
   const { width, height, imageUrl } = configuration;
   return (
-    <DesingConfigurator
+    <DesignConfigurator
       configId={configuration.id}
       imageUrl={imageUrl}
       imageDimensions={{

@@ -48,7 +48,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
         throw new Error("Unable to retrieve payment URL");
       }
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         title: "Something went wrong",
         description: "There was an error on our end. Please try again later.",

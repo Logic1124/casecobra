@@ -5,7 +5,6 @@ import { BASE_PRICE, PRODUCT_PRICES } from "@/config/products";
 import { stripe } from "@/lib/stripe";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Order } from "@prisma/client";
-import { use } from "react";
 export const createCheckoutSession = async ({
   configId,
 }: {

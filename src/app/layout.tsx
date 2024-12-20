@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import Providers from "@/components/Providers";
-import { Recursive } from "next/font/google";
-const recursive = Recursive({ subsets: ["latin"] });
+// import { Recursive } from "next/font/google";
+// const recursive = Recursive({ subsets: ["latin"] });
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,10 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <body
+      <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      > */}
-      <body className={recursive.className}>
+      >
+        {/* <body className={recursive.className}> */}
         <Navbar />
         {/* 修复upload部分的input输入框不占位的问题 */}
         <main className="flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]">

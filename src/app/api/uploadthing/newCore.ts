@@ -1,6 +1,4 @@
-import { db } from "@/app/db";
 import COS from "cos-js-sdk-v5";
-import sharp from "sharp";
 
 // SECRETID 和 SECRETKEY 请登录 https://console.cloud.tencent.com/cam/capi 进行查看和管理
 const cos = new COS({
