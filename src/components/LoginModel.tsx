@@ -9,7 +9,7 @@ import {
 import Image from "next/image";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 import { buttonVariants } from "./ui/button";
-const LoginModel = ({
+const LoginModal = ({
   isOpen,
   setIsOpen,
 }: {
@@ -49,4 +49,4 @@ const LoginModel = ({
     </Dialog>
   );
 };
-export default LoginModel;
+export default LoginModal;
