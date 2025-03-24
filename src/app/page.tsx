@@ -9,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 export default function Home() {
   return (
     <div className="bg-slate-50">
+      {/* 测试merge */}
       <section>
         <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
           <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
@@ -238,11 +239,20 @@ export default function Home() {
               Wireless charging compatible
             </li>
             <li className="w-fit">
-              <Check className="h-5 w-5 text-green-600 inline mr-1.5" />
-              5 year print warranty
+              <Check className="h-5 w-5 text-green-600 inline mr-1.5" />5 year
+              print warranty
             </li>
             <div className="flex justify-center">
-              <Link className={buttonVariants({ size: 'lg', className: 'mx-auto mt-8' })} href='/configure/upload'>Create you case now<ArrowRight className="h-4 w-4 ml-1.5" /></Link>
+              <Link
+                className={buttonVariants({
+                  size: "lg",
+                  className: "mx-auto mt-8",
+                })}
+                href="/configure/upload"
+              >
+                Create you case now
+                <ArrowRight className="h-4 w-4 ml-1.5" />
+              </Link>
             </div>
           </ul>
         </MaxWidthWrapper>
